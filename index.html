@@ -9,6 +9,7 @@
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
+            padding-bottom: 60px; /* Space for bottom menu */
             background: #f0f2f5;
             color: #333;
         }
@@ -23,23 +24,63 @@
             margin: 0;
             font-size: 2.5rem;
         }
-        nav {
+        /* Top Dropdown Menu */
+        nav.top-nav {
             background: #2c3e50;
             padding: 1rem;
-            text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        nav a {
+        .menu-btn {
+            display: none; /* Hidden on desktop */
+            background: none;
+            border: none;
             color: #ecf0f1;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .nav-links li {
             margin: 0 1.5rem;
+        }
+        .nav-links a {
+            color: #ecf0f1;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
         }
-        nav a:hover {
+        .nav-links a:hover {
             color: #e74c3c;
+        }
+        /* Bottom Fixed Menu */
+        nav.bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #2c3e50;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+            z-index: 100;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+        }
+        .bottom-nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-align: center;
+            flex: 1;
+            padding: 0.5rem;
+        }
+        .bottom-nav a:hover {
+            background: #34495e;
         }
         section {
             max-width: 900px;
@@ -74,7 +115,7 @@
             margin: 1rem 0;
         }
         .progress {
-            width: 0%; /* Update this % based on funds raised */
+            width: 0%; /* Update this % */
             height: 20px;
             background: #27ae60;
             transition: width 0.5s;
@@ -113,6 +154,29 @@
             padding: 1rem;
             margin-top: 2rem;
         }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+                float: right;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #2c3e50;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -121,15 +185,18 @@
         <p>A Digital Legacy for Our Heritage</p>
     </header>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#timeline">Timeline</a>
-        <a href="#budget">Budget</a>
-        <a href="#updates">Updates</a>
-        <a href="#gallery">Gallery</a>
-        <a href="blog.html">Blog</a>
-        <a href="/prototype/">App Prototype</a>
-        <a href="#donate">Get Involved</a>
+    <nav class="top-nav">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#budget">Budget</a></li>
+            <li><a href="#updates">Updates</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="/prototype/">App Prototype</a></li>
+            <li><a href="#donate">Get Involved</a></li>
+        </ul>
     </nav>
 
     <section id="about">
@@ -176,8 +243,8 @@
                 <img src="/images/recording.jpg" alt="Recording Session">
                 <img src="/images/team.jpg" alt="Team at Work">
             </div>
-            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            <button class="prev" onclick="moveSlide(-1)">❮</button>
+            <button class="next" onclick="moveSlide(1)">❯</button>
         </div>
     </section>
 
@@ -189,11 +256,25 @@
         <a href="#" class="donate-btn">Donate Now</a>
     </section>
 
+    <nav class="bottom-nav">
+        <a href="index.html">Home</a>
+        <a href="#updates">Update</a>
+        <a href="/prototype/">App</a>
+        <a href="#donate">Contact</a>
+    </nav>
+
     <footer>
-        <p>© 2025 Ngas Language Preservation Project | Built by KT Yilwada </p>
+        <p>© 2025 Ngas Language Preservation Project | Built by [Your Name]</p>
     </footer>
 
     <script>
+        // Dropdown Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Gallery Slideshow
         let slideIndex = 0;
         const slides = document.querySelector('.slides');
         const totalSlides = slides.children.length;
