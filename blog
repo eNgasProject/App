@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Ngas Language Project</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #ecf0f1;
+            margin: 0 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #e74c3c;
+        }
+        section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1a2a6c;
+        }
+        article {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog - Ngas Language Project</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#timeline">Timeline</a>
+        <a href="index.html#budget">Budget</a>
+        <a href="index.html#donate">Get Involved</a>
+    </nav>
+
+    <section>
+        <h2>Latest Updates</h2>
+        <article>
+            <h3>April 1, 2025: Project Kickoff</h3>
+            <p>We’ve launched with 2000 words! Our linguists are categorizing and recording—stay tuned for more.</p>
+        </article>
+        <article>
+            <h3>[Date]: [Next Update]</h3>
+            <p>[Add future updates here, e.g., “May 2025: First 100 words recorded!”]</p>
+        </article>
+    </section>
+
+    <footer>
+        <p>© 2025 Ngas Language Preservation Project | Built by [Your Name]</p>
+    </footer>
+</body>
+</html>
